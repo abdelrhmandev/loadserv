@@ -9,9 +9,12 @@ class InvoiceResource extends JsonResource
     use ApiFunctions;
     public function toArray($request)
     {
+
+        $this->image && File::exists(public_path($this->image)) ? ($imagePath = url(asset($this->image))) : ($imagePath = asset('assets/backend/media/svg/files/blank-image.svg'));
+
         return [
             'title'        => $this->title,
-            'image'        => $this->image,
+            'image'        => $imagePath,
             'amount'        => $this->amount,
             'AddedBy'      => $this->admin->name.' - '.$this->admin->getRoleNames(),
             'created_at'    => $this->created_at,

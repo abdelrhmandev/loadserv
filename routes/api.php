@@ -12,6 +12,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'api'], function () {
         Route::get('/invoices', [InvoiceController::class, 'index']);
         Route::post('/invoices/store', [InvoiceController::class, 'store']);
         Route::put('/invoices/update/{id}', [InvoiceController::class, 'update']);
+        Route::delete('/invoices/destroy/{id}', [InvoiceController::class, 'destroy']);
     });
 });
 

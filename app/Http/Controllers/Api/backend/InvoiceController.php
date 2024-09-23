@@ -75,8 +75,7 @@ class InvoiceController extends Controller{
                 }
     }
 
-        public function destroy($id)
-    {
+        public function destroy($id){      
         $invoice = Invoice::find($id);
         InvoiceLog::create(['invoice_title'=>$invoice->title,'action'=>'deleted','invoice_id'=>$invoice->id,'admin_id'=>Auth::guard('api')->user()->id]);
         $invoice->image ? $this->unlinkFile($invoice->image) : '';
